@@ -4,13 +4,21 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/css";
-import { Recipe } from "../type/recipe";
+import { getVeggieRecipes } from "../api";
 
-interface Props {
-  recipes: Recipe[];
-}
+o
 
-const Veggie = ({ recipes }: Props) => {
+const Veggie = () => {
+  
+
+  useEffect(() => {
+    const getVeggie = async () => {
+      const recipe = await getVeggieRecipes();
+      setVeggie(recipe);
+    }
+    getVeggie();
+  }, []);
+
   return (
     <div>
       <Wrapper>
@@ -23,7 +31,7 @@ const Veggie = ({ recipes }: Props) => {
             drag: "free",
           }}
         >
-          {recipes.map((recipe) => {
+          {veggie.map((recipe) => {
             return (
               <SplideSlide key={recipe.id}>
                 <Card>

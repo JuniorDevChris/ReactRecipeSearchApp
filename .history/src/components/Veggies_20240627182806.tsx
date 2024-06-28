@@ -6,11 +6,13 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/css";
 import { Recipe } from "../type/recipe";
 
+
 interface Props {
   recipes: Recipe[];
 }
 
-const Veggie = ({ recipes }: Props) => {
+const Veggie = ({recipes}: Props) => {
+
   return (
     <div>
       <Wrapper>
@@ -23,7 +25,7 @@ const Veggie = ({ recipes }: Props) => {
             drag: "free",
           }}
         >
-          {recipes.map((recipe) => {
+          {veggie.map((recipe) => {
             return (
               <SplideSlide key={recipe.id}>
                 <Card>

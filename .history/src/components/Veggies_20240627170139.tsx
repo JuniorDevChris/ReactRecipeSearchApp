@@ -4,13 +4,39 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/css";
-import { Recipe } from "../type/recipe";
+import { getVeggieRecipes } from "../api";
 
-interface Props {
-  recipes: Recipe[];
-}
+const Veggie = () => {
+  const [veggie, setVeggie] = useState<any[]>([]);
 
-const Veggie = ({ recipes }: Props) => {
+  useEffect(() => {
+    const getVeggie = async () => {
+      const recipe = await getVeggieRecipes();
+      setVeggie(recipe);
+    }
+    getV
+  }, []);
+
+  // const getVeggie = async () => {
+  //   try {
+  //     const check = localStorage.getItem("veggie");
+
+  //     if (check) {
+  //       setVeggie(JSON.parse(check));
+  //     } else {
+  //       const api = await fetch(
+  //         `https://api.spoonacular.com/recipes/random?apiKey=${
+  //           import.meta.env.VITE_REACT_APP_API_KEY
+  //         }&number=9`
+  //       );
+  //       const response = await api.json();
+  //       localStorage.setItem("veggie", JSON.stringify(response.recipes));
+  //       setVeggie(response.recipes);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error fetching recipe: ", error);
+  //   }
+  // };
   return (
     <div>
       <Wrapper>
@@ -23,7 +49,7 @@ const Veggie = ({ recipes }: Props) => {
             drag: "free",
           }}
         >
-          {recipes.map((recipe) => {
+          {veggie.map((recipe) => {
             return (
               <SplideSlide key={recipe.id}>
                 <Card>

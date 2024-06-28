@@ -8,7 +8,7 @@ const Home = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   useEffect(() => {
     const getVeggie = async () => {
-      const recipes = await fetchRecipes("veggie", "vegetarian");
+      const recipes = await getVeggieRecipes("veggie", "vegetarian");
       setRecipes(recipes);
     };
     getVeggie();

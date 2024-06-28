@@ -4,13 +4,14 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/css";
-import { Recipe } from "../type/recipe";
+
 
 interface Props {
-  recipes: Recipe[];
+  recipes: Recipes[];
 }
 
-const Veggie = ({ recipes }: Props) => {
+const Veggie = ({id, title, image}: Props) => {
+
   return (
     <div>
       <Wrapper>
@@ -23,7 +24,7 @@ const Veggie = ({ recipes }: Props) => {
             drag: "free",
           }}
         >
-          {recipes.map((recipe) => {
+          {veggie.map((recipe) => {
             return (
               <SplideSlide key={recipe.id}>
                 <Card>
